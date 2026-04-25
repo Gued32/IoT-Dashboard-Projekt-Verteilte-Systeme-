@@ -1,5 +1,4 @@
-# IoT-Dashboard-Projekt-Verteilte-Systeme-
-# IoT-Dashboard – Projekt Verteilte Systeme
+# IoT-Dashboard – Projekt Verteilte Systeme (Projektbeschreibung)
 
 ## 📌 Projektübersicht
 

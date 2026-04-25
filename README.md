@@ -102,6 +102,3 @@ Das System adressiert zentrale Aspekte verteilter Systeme:
 
 ---
 
-## 🧾 Hinweis
-
-Dieses Projekt erfüllt die Anforderungen des Kurses, indem es mindestens zwei relevante Technologien verteilter Systeme integriert (MQTT und REST API) und eine funktionierende, verteilte Anwendung bereitstellt.

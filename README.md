@@ -45,7 +45,7 @@ Die Anwendung besteht aus mehreren logisch getrennten Komponenten:
 * **REST API (HTTP)** – Schnittstelle für Datenzugriff
 * **Python** – Backend und Simulation
 * **SQLite** – Leichtgewichtige Datenbanklösung
-* **HTML, CSS, JavaScript, Streamlit mit Python ** – Frontend und Visualisierung
+* **HTML, CSS, JavaScript, Streamlit mit Python** – Frontend und Visualisierung
 
 ---
 

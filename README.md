@@ -24,7 +24,7 @@ Die Anwendung besteht aus mehreren logisch getrennten Komponenten:
 * **MQTT-Broker (Mosquitto):** Vermittelt Nachrichten zwischen Sendern und Empfängern
 * **Backend (Flask oder FastAPI):** Empfängt, verarbeitet und speichert Daten
 * **Datenbank (SQLite):** Persistente Speicherung der Sensordaten
-* **Web-Dashboard (HTML/JavaScript):** Visualisierung der Daten im Browser
+* **Web-Dashboard (HTML/JavaScript/Flask oder Streamlit mit Python):** Visualisierung der Daten im Browser
 
 ---
 

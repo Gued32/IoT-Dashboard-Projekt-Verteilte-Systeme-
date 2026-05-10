@@ -7,7 +7,7 @@ from datetime import datetime, timezone
 
 import paho.mqtt.client as mqtt
 
-RECONNECT_DELAY_SECONDS = 0.2
+RECONNECT_DELAY_SECONDS = 1.0
 
 
 def generate_payload(sensor_id: str) -> dict:

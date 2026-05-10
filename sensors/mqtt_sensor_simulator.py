@@ -28,7 +28,10 @@ def main() -> None:
     )
     args = parser.parse_args()
 
-    client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2)
+    client = mqtt.Client(
+        mqtt.CallbackAPIVersion.VERSION2,
+        client_id=args.sensor_id,
+    )
     try:
         client.connect(args.broker, args.port, 60)
     except OSError as error:
@@ -42,8 +45,13 @@ def main() -> None:
         while True:
             payload = generate_payload(args.sensor_id)
             data = json.dumps(payload)
-            client.publish(args.topic, data)
-            print(f"Published to {args.topic}: {data}")
+            message_info = client.publish(args.topic, data)
+            if message_info.rc == mqtt.MQTT_ERR_SUCCESS:
+                print(f"Published to {args.topic}: {data}")
+            else:
+                print(
+                    f"Publish failed for topic {args.topic} with rc={message_info.rc}: {data}"
+                )
             time.sleep(args.interval)
     except KeyboardInterrupt:
         print("Stopping simulator...")

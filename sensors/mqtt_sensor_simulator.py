@@ -43,6 +43,15 @@ def main() -> None:
 
     try:
         while True:
+            if not client.is_connected():
+                print("MQTT client disconnected, attempting reconnect...")
+                try:
+                    client.reconnect()
+                except OSError as error:
+                    print(f"Reconnect failed: {error}")
+                    time.sleep(args.interval)
+                    continue
+
             payload = generate_payload(args.sensor_id)
             data = json.dumps(payload)
             message_info = client.publish(args.topic, data)

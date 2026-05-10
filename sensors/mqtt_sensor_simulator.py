@@ -47,6 +47,7 @@ def main() -> None:
                 print("MQTT client disconnected, attempting reconnect...")
                 try:
                     client.reconnect()
+                    time.sleep(0.2)
                 except OSError as error:
                     print(f"Reconnect failed: {error}")
                     time.sleep(args.interval)
@@ -59,7 +60,8 @@ def main() -> None:
                 print(f"Published to {args.topic}: {data}")
             else:
                 print(
-                    f"Publish failed for topic {args.topic} with rc={message_info.rc}: {data}"
+                    "Publish failed for topic "
+                    f"{args.topic} ({mqtt.error_string(message_info.rc)}): {data}"
                 )
             time.sleep(args.interval)
     except KeyboardInterrupt:

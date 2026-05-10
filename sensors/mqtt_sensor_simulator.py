@@ -1,6 +1,7 @@
 import argparse
 import json
 import random
+import sys
 import time
 from datetime import datetime, timezone
 
@@ -27,8 +28,14 @@ def main() -> None:
     )
     args = parser.parse_args()
 
-    client = mqtt.Client()
-    client.connect(args.broker, args.port, 60)
+    client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2)
+    try:
+        client.connect(args.broker, args.port, 60)
+    except OSError as error:
+        print(
+            f"Could not connect to MQTT broker at {args.broker}:{args.port} ({error})."
+        )
+        sys.exit(1)
     client.loop_start()
 
     try:

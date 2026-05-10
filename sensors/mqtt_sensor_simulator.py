@@ -54,8 +54,9 @@ def main() -> None:
             payload = generate_payload(args.sensor_id)
             data = json.dumps(payload)
             message_info = client.publish(args.topic, data)
-            message_info.wait_for_publish(timeout=2.0)
-            if message_info.rc == mqtt.MQTT_ERR_SUCCESS and message_info.is_published():
+            publish_timeout = min(2.0, max(0.5, args.interval * 0.8))
+            message_info.wait_for_publish(timeout=publish_timeout)
+            if message_info.is_published():
                 print(f"Published to {args.topic}: {data}")
             else:
                 print(
